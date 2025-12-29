@@ -1,0 +1,69 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<svg
+   overflow="visible"
+   version="1.1"
+   id="svg4"
+   sodipodi:docname="6ce4cce5-147b-4e68-9d18-0ec0c567108d.xaml"
+   xmlns:inkscape="http://www.inkscape.org/namespaces/inkscape"
+   xmlns:sodipodi="http://sodipodi.sourceforge.net/DTD/sodipodi-0.dtd"
+   xmlns="http://www.w3.org/2000/svg"
+   xmlns:svg="http://www.w3.org/2000/svg">
+  <defs
+     id="defs5" />
+  <sodipodi:namedview
+     id="namedview4"
+     pagecolor="#ffffff"
+     bordercolor="#000000"
+     borderopacity="0.25"
+     inkscape:showpageshadow="2"
+     inkscape:pageopacity="0.0"
+     inkscape:pagecheckerboard="0"
+     inkscape:deskcolor="#d1d1d1" />
+  <svg
+     id="svg2"
+     width="24"
+     height="24"
+     version="1.1">
+    <svg
+       id="Slipball_Canvas"
+       version="1.1">
+      <g
+         id="g4">
+        <defs
+           id="defs4">
+          <radialGradient
+             id="id_id1"
+             gradientUnits="boundingBox"
+             r="">
+            <stop
+               offset="0.20"
+               stop-color="#808080"
+               stop-opacity="0.50"
+               id="stop1" />
+            <stop
+               stop-color="White"
+               id="stop2" />
+            <stop
+               offset="1"
+               stop-color="#202020"
+               id="stop3" />
+            <stop
+               stop-color="#808080"
+               id="stop4" />
+          </radialGradient>
+        </defs>
+        <rect
+           x="0"
+           y="0"
+           width="24"
+           height="24"
+           rx="12"
+           ry="12"
+           id="Slipball"
+           stroke="Black"
+           stroke-width="2"
+           fill="url(#id_id1)" />
+      </g>
+    </svg>
+  </svg>
+</svg>

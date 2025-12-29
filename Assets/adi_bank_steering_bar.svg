@@ -1,0 +1,141 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<svg
+   overflow="visible"
+   version="1.1"
+   id="svg11"
+   sodipodi:docname="4a97c88e-02df-47e4-a288-26786dae31e7.xaml"
+   xmlns:inkscape="http://www.inkscape.org/namespaces/inkscape"
+   xmlns:sodipodi="http://sodipodi.sourceforge.net/DTD/sodipodi-0.dtd"
+   xmlns="http://www.w3.org/2000/svg"
+   xmlns:svg="http://www.w3.org/2000/svg">
+  <defs
+     id="defs11" />
+  <sodipodi:namedview
+     id="namedview11"
+     pagecolor="#ffffff"
+     bordercolor="#000000"
+     borderopacity="0.25"
+     inkscape:showpageshadow="2"
+     inkscape:pageopacity="0.0"
+     inkscape:pagecheckerboard="0"
+     inkscape:deskcolor="#d1d1d1" />
+  <svg
+     id="svg2"
+     width="24"
+     height="239"
+     version="1.1">
+    <defs
+       id="defs10">
+      <linearGradient
+         id="linearGradient4269"
+         gradientUnits="boundingBox"
+         x1="0%"
+         y1="0%"
+         x2="100%"
+         y2="100%">
+        <stop
+           offset="0"
+           stop-color="#646464"
+           id="stop1" />
+        <stop
+           offset="1"
+           stop-color="#141414"
+           id="stop2" />
+      </linearGradient>
+      <linearGradient
+         id="linearGradient3897"
+         gradientUnits="boundingBox"
+         x1="0%"
+         y1="0%"
+         x2="100%"
+         y2="100%">
+        <stop
+           offset="0"
+           stop-color="#505050"
+           stop-opacity="0.00"
+           id="stop3" />
+        <stop
+           offset="0.81944442"
+           stop-color="#505050"
+           stop-opacity="0.00"
+           id="stop4" />
+        <stop
+           offset="1"
+           stop-color="#505050"
+           stop-opacity="0.62"
+           id="stop5" />
+      </linearGradient>
+      <radialGradient
+         id="radialGradient3903"
+         gradientUnits="boundingBox"
+         cx="174"
+         cy="159.5"
+         fx="174"
+         fy="159.5"
+         r="111.4995">
+        <stop
+           offset="0"
+           stop-color="#505050"
+           stop-opacity="0.00"
+           id="stop6" />
+        <stop
+           offset="0.81944442"
+           stop-color="#505050"
+           stop-opacity="0.00"
+           id="stop7" />
+        <stop
+           offset="1"
+           stop-color="#505050"
+           stop-opacity="0.62"
+           id="stop8" />
+      </radialGradient>
+      <radialGradient
+         id="radialGradient4275"
+         gradientUnits="boundingBox"
+         cx="175"
+         cy="312"
+         fx="175"
+         fy="312"
+         r="5">
+        <stop
+           offset="0"
+           stop-color="#646464"
+           id="stop9" />
+        <stop
+           offset="1"
+           stop-color="#141414"
+           id="stop10" />
+      </radialGradient>
+    </defs>
+    <svg
+       id="layer5"
+       version="1.1">
+      <svg
+         version="1.1"
+         id="svg10">
+        <g
+           transform="translate(-152.61324, 1.0887292) "
+           id="g10">
+          <path
+             d="m 152.78125 33.0625 0.007 31.531021 c 0.007 1.874771 -0.28384 3.738953 0.99275 5.312729 0.89122 1.1621 3.03725 1.375415 3.13415 1.327015 l 4.67835 0.18861 6.6875 -0.125 0.49241 0.02321 c 0 0 1.52132 -0.139099 1.93593 0.490847 0.7806 0.794564 0.76988 1.481694 0.76988 1.481694 l 0.0674 1.769876 -0.14062 14.84375 5.1875 0 -0.006 -16.563072 c 0.0386 -1.984487 -0.0805 -3.796754 -1.17057 -5.186928 -0.89122 -1.162104 -3.12565 -1.552231 -5.13102 -1.614179 l -8.44286 -0.276446 -1.28504 -0.0027 c 0 0 -1.03518 0.148251 -1.91383 -0.459597 -0.91318 -0.595687 -0.80113 -1.579235 -0.80113 -1.579235 l 0.0156 -1.599112 -0.0156 -29.5625 z"
+             id="rect3933"
+             fill="#141414"
+             stroke="#141414"
+             stroke-width="0"
+             stroke-miterlimit="4" />
+        </g>
+      </svg>
+    </svg>
+    <rect
+       x="24"
+       y="90"
+       width="148"
+       height="5"
+       id="rect3876"
+       fill="#FFD50B"
+       stroke="#141414"
+       stroke-width="1"
+       stroke-miterlimit="4"
+       transform="matrix(0,1,-1,0,0,0) " />
+  </svg>
+</svg>

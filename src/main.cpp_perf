@@ -1,0 +1,199 @@
+#include <Arduino.h>
+#include <config.h>
+#include "helper.h"
+
+static LGFX lcd;
+static LGFX_Sprite sprites[2];
+
+auto lcd_width = 480;
+auto lcd_height = 480;
+
+int frameCounter = 0;
+
+#define NUM_BLOCKS 50
+
+class Block {
+  public:
+    int x;
+    int y;
+    int width;
+    int height;
+    int colour;
+    int xVel;
+    int yVel;
+
+    // default constructor
+    Block(){}
+    
+    Block(int xpos, int ypos, int bwidth, int bheight, int bcol, int bxVel, int byVel){
+      x = xpos;
+      y = ypos;
+      width = bwidth;
+      height = bheight;
+      colour = bcol;
+      xVel = bxVel;
+      yVel = byVel;
+    }
+
+    void drawBlock(LGFX_Sprite *sprite){
+      sprite->fillRect(x,y,width,height,colour);
+    }
+
+    void moveBlock(){
+      x += xVel;
+      if(x < 0){
+        x = 0;
+        xVel = -xVel;
+      }
+      else if(x > (lcd_width - width)) {
+        x = (lcd_width - width);
+        xVel = -xVel;
+      }
+
+      y += yVel;
+      if(y < 0){
+        y = 0;
+        yVel = -yVel;
+      }
+      else if(y > (lcd_height - height)) {
+        y = (lcd_height - height);
+        yVel = -yVel;
+      }
+    }
+};
+Block blocks[NUM_BLOCKS];
+
+void setup() {
+  int blockCounter;
+
+  frameCounter = 0;
+
+  lcd.begin();
+  lcd.startWrite();
+  lcd.setColorDepth(16);
+  lcd.setTextSize(10);
+  if (lcd.width() < lcd.height()) lcd.setRotation(lcd.getRotation() ^ 1);
+
+  for (std::uint32_t i = 0; i < 2; ++i)
+  {
+    sprites[i].setTextSize(2);
+    sprites[i].setColorDepth(8);
+  }
+
+  bool fail = false;
+  for (std::uint32_t i = 0; !fail && i < 2; ++i)
+  {
+    fail = !sprites[i].createSprite(lcd_width, lcd_height);
+  }
+
+  if (fail)
+  {
+    fail = false;
+    for (std::uint32_t i = 0; !fail && i < 2; ++i)
+    {
+      sprites[i].setPsram(true);
+      fail = !sprites[i].createSprite(lcd_width, lcd_height);
+    }
+
+    if (fail)
+    {
+      fail = false;
+      if (lcd_width > 320) lcd_width = 320;
+      if (lcd_height > 240) lcd_height = 240;
+
+      for (std::uint32_t i = 0; !fail && i < 2; ++i)
+      {
+        sprites[i].setPsram(true);
+        fail = !sprites[i].createSprite(lcd_width, lcd_height);
+      }
+      if (fail)
+      {
+        lcd.print("createSprite fail...");
+        lgfx::delay(3000);
+      }
+    }
+  }
+
+  lcd.fillScreen(TFT_BLACK);
+
+  for(blockCounter=0; blockCounter < NUM_BLOCKS; blockCounter ++){
+    blocks[blockCounter] = Block(
+      0,
+      0,
+      random(3,20),
+      random(3,20),
+      lgfx::color565(100+(rand()%155), 100+(rand()%155), 100+(rand()%155)),
+      random(20) - 10,
+      random(20) - 10
+    );
+  }
+
+}
+
+static void diffDraw(LGFX_Sprite* sp0, LGFX_Sprite* sp1)
+{
+  union
+  {
+    std::uint32_t* s32;
+    std::uint8_t* s;
+  };
+  union
+  {
+    std::uint32_t* p32;
+    std::uint8_t* p;
+  };
+  s32 = (std::uint32_t*)sp0->getBuffer();
+  p32 = (std::uint32_t*)sp1->getBuffer();
+
+  auto width  = sp0->width();
+  auto height = sp0->height();
+
+  auto w32 = (width+3) >> 2;
+  std::int32_t y = 0;
+  do
+  {
+    std::int32_t x32 = 0;
+    do
+    {
+      while (s32[x32] == p32[x32] && ++x32 < w32);
+      if (x32 == w32) break;
+
+      std::int32_t xs = x32 << 2;
+      while (s[xs] == p[xs]) ++xs;
+
+      while (++x32 < w32 && s32[x32] != p32[x32]);
+
+      std::int32_t xe = (x32 << 2) - 1;
+      if (xe >= width) xe = width - 1;
+      while (s[xe] == p[xe]) --xe;
+
+      lcd.pushImage(xs, y, xe - xs + 1, 1, &s[xs]);
+    } while (x32 < w32);
+    s32 += w32;
+    p32 += w32;
+  } while (++y < height);
+  lcd.display();
+}
+
+
+
+int loopTime=0;
+void loop () {
+  int blockCounter;
+  size_t f =   frameCounter & 1;
+  LGFX_Sprite *sprite = &(sprites[f]);
+
+  auto startTime = micros();
+  sprite->clear();
+  for(blockCounter=0; blockCounter < NUM_BLOCKS; blockCounter ++){
+    blocks[blockCounter].moveBlock();
+    blocks[blockCounter].drawBlock(sprite);
+  }
+  sprite->setCursor(200,200);
+  sprite->setTextColor(TFT_WHITE);
+  sprite->printf("%d us", loopTime);
+  diffDraw(&sprites[f], &sprites[!f]);
+  auto endTime = micros();
+  loopTime = endTime - startTime;
+  frameCounter ++;
+}
